@@ -11,6 +11,8 @@
                 <p id="space">space</p>
             </div>
         </div>
+
+        <p>Para iniciar uma conta "admin" inserir email: brunomajusta@gmail.com; password: 123123</p>
     </div>
 </template>
 
