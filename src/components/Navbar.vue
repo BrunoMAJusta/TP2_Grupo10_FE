@@ -5,7 +5,7 @@
         <div v-if="this.$store.state.loggedUser.length != 0" style="float: left">
           <router-link v-if="this.$store.state.loggedUser.userType == 1" to="/adminHome">Início</router-link>
           <span>|</span>
-          <router-link v-if="this.$store.state.loggedUser.length ==1" to="/addEpis">Catálogo</router-link>
+          <router-link v-if="this.$store.state.loggedUser.length ==1" to="/addEpis">Adicionar EPI</router-link>
           <router-link v-else to="/">Início</router-link>
           <span>|</span>
           <router-link to="/epiCatalog">Catálogo</router-link>
