@@ -59,35 +59,23 @@
       zip_code: "",
       number: ""
     }),
-    created: function () {
-      window.addEventListener('unload', this.saveStorage)
-      if (localStorage.getItem("users")) {
-        this.$store.state.users = JSON.parse(localStorage.getItem("users"))
-      }
-      if (localStorage.getItem("loggedUser")) {
-        this.$store.state.loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      }
-    },
     methods: {
-      getLastId() {
-        return this.$store.getters.lastId + 1
-      },
-      addUser() {
-        this.$store.commit('ADD_USER', {
+    async addUser() {
+      try {
+        await this.$store.dispatch("postUser", {
           id: this.getLastId(),
           email: this.email,
           name: this.name,
           password: this.password,
           confPassword: this.confPassword,
           adress: this.adress,
-          zip_code: this.zip_code,
+          zipcode: this.zip_code,
           number: this.number,
-        })
-      },
-      saveStorage() {
-        localStorage.setItem("users", JSON.stringify(this.$store.state.users))
-        localStorage.setItem("loggedUser", JSON.stringify(this.$store.state.loggedUser))
-      },
+        });
+      } catch (err) {
+        alert(err);
+      }
+    },
     }
   }
 </script>
