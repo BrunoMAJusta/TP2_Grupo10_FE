@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router';
 
+import pyService from "@/API/pyService.js"
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -17,7 +19,8 @@ export default new Vuex.Store({
       number: "111111111",
     }],
     loggedUser: [],
-    userExists: false
+    userExists: false,
+    epis: []
   },
   mutations: {
     STORE_ITEMS(state) {
@@ -94,8 +97,30 @@ export default new Vuex.Store({
       })
       location.reload();
     },
+    SET_EPIS(state, data) {
+      state.epis = data
+    },
+    ADD_USER(state, data) {
+      alert(data.message)
+      router.push({
+        name: 'login'
+      })
+    },
+  },
+  actions: {
+    async fetchEpis({
+      commit
+    }) {
+      commit("SET_EPIS", await pyService.getEPIS())
+    },
+    async postUser({
+      commit
+    }, payload) {
+      commit("ADD_USER", await pyService.registerUser(payload.name, payload.email, payload.adress, payload.zipcode, payload.number, payload.password, payload.password2))
+    },
   },
   getters: {
+    getEPIS: state => state.epis,
     lastId(state) {
       if (state.users.length) {
         return state.users[state.users.length - 1].id;
