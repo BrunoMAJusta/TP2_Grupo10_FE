@@ -43,7 +43,7 @@ export default new Vuex.Store({
           state.epis = data
         },
         SET_CATEGORY(state, data) {
-          state.categorys = data
+          state.categorys = data.data
         },
 
         ADD_USER(state, data) {
@@ -85,6 +85,7 @@ export default new Vuex.Store({
             },
         },
         getters: {
+          getCate: state => state.categorys,
           getEPIS: state => state.epis,
           lastId(state) {
             if (state.users.length) {

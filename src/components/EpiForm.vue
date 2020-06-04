@@ -23,8 +23,8 @@
           </div>
           <div class="form-group">
             <label for="exampleType">Categoria da EPI</label>
-            <select class="form-control" v-model="category">
-              <option>Default select</option>
+            <select class="form-control" v-model="selectCate">
+            <option v-for="type in  category" :key="type.category_id" :value="type.category">{{type.category}}</option>
             </select>
           </div>
           <div class="form-group">
@@ -59,27 +59,46 @@
 
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "EpiForm",
   data: () => ({
     name: "",
-    category: "",
+    category: [],
     price: "",
-    img: ""
+    img: "",
+    selectCate: ""
   }),
+  created(){
+    this.getCategories()
+    this.category = this.$store.state.categorys
+  },
   methods: {
     async addEpi() {
       try {
         await this.$store.dispatch("addEpi", {
           name: this.name,
-          category_id: this.category,
+          category_id: this.selectCate,
           img: this.img,
           price: this.price
         });
       } catch (err) {
         alert(err);
       }
-    }
+    },
+    async getCategories() {
+      try {
+        await this.$store.dispatch("fetchCategorys");
+        this.category = this.getCate.data;
+      } catch (err) {
+        alert(err);
+      }
+    },
+  },
+  computed:{
+    ...mapGetters(["getCate"]),
+
   }
 };
 </script>
