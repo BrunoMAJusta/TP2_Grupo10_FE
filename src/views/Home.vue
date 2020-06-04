@@ -1,18 +1,50 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <div class="container-full title">
+            <h1 id="redTitle">TESTE PW2</h1>
+            <hr class="back-line">
+            <div class="container" id="whiteRect">
+                <p id="space">space</p>
+            </div>
+        </div>
+    </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+<style lang="css" scoped>
+    #redTitle {
+        font-size: 45px;
+        color: #007bff;
+        display: block;
+        z-index: 7;
+        position: relative;
+    }
 
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+    .back-line {
+        background-color: black;
+        margin-top: -35px;
+        width: 60vw;
+        display: block;
+        z-index: 5;
+        position: relative;
+        height: 1px;
+    }
+
+    #space {
+        color: white;
+    }
+
+    .title {
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+
+    #whiteRect {
+        background-color: white;
+        margin-top: -35px;
+        height: 35px;
+        width: 340px;
+        position: relative;
+        display: block;
+        z-index: 5;
+    }
+</style>
