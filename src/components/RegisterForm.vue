@@ -63,11 +63,10 @@
     async addUser() {
       try {
         await this.$store.dispatch("postUser", {
-          id: this.getLastId(),
           email: this.email,
           name: this.name,
           password: this.password,
-          confPassword: this.confPassword,
+          password2: this.confPassword,
           adress: this.adress,
           zipcode: this.zip_code,
           number: this.number,

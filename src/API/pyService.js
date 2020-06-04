@@ -18,7 +18,7 @@ const pyService = {
             throw Error(response)
         }
     },
-    async registerUser(name, email, password, password2, adress, zipcode, number) {
+    async registerUser(name, email, adress, zipcode, number, password, password2) {
         const response = await fetch(`${API_URL}users`, {
             method: "POST",
             headers: {
