@@ -6,7 +6,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    users: [],
+    users: [{
+      id: 0,
+      name: "admin",
+      email: "admin@admin.admin",
+      password: "admin",
+      userType: 1,
+      adress: "adress admin",
+      zip_code: "4795-000",
+      number: "111111111",
+    }],
     loggedUser: [],
     userExists: false
   },
@@ -26,6 +35,7 @@ export default new Vuex.Store({
             name: payload.name,
             email: payload.email,
             password: payload.password,
+            userType: 2,
             adress: payload.adress,
             zip_code: payload.zip_code,
             number: payload.number,
@@ -48,6 +58,7 @@ export default new Vuex.Store({
             name: user.name,
             email: user.email,
             password: user.password,
+            userType: user.userType,
             adress: user.adress,
             zip_code: user.zip_code,
             number: user.number,
@@ -55,10 +66,17 @@ export default new Vuex.Store({
           state.userExists = true
           localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser));
           alert('Bem-vindo ' + state.loggedUser.name)
-          router.push({
-            name: 'home'
-          })
-          location.reload();
+          if (state.loggedUser.userType == 1) {
+            alert("admin")
+            router.push({
+              name: 'adminHome'
+            })
+          } else {
+            alert("user")
+            router.push({
+              name: 'home'
+            })
+          }
           break;
         } else {
           state.userExists = false;
