@@ -19,6 +19,18 @@
           <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email" v-model="email" required>
         </div>
         <div class="form-group">
+          <label for="exampleInputName">Morada:</label>
+          <input type="text" class="form-control" id="exampleInputName" placeholder="Morada" v-model="adress" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputName">Código Postal</label>
+          <input type="text" class="form-control" id="exampleInputName" placeholder="Código Postal" v-model="zip_code" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputName">Contacto</label>
+          <input type="text" class="form-control" id="exampleInputName" placeholder="Contacto" v-model="number" required>
+        </div>
+        <div class="form-group">
           <label for="exampleInputPassword">Palavra-Passe:</label>
           <input type="password" class="form-control" id="exampleInputPassword" placeholder="Palavra-Passe"
             v-model="password" required>
@@ -43,6 +55,9 @@
       name: "",
       password: "",
       confPassword: "",
+      adress: "",
+      zip_code: "",
+      number: ""
     }),
     created: function () {
       window.addEventListener('unload', this.saveStorage)
@@ -64,6 +79,9 @@
           name: this.name,
           password: this.password,
           confPassword: this.confPassword,
+          adress: this.adress,
+          zip_code: this.zip_code,
+          number: this.number,
         })
       },
       saveStorage() {

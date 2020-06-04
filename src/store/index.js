@@ -26,6 +26,9 @@ export default new Vuex.Store({
             name: payload.name,
             email: payload.email,
             password: payload.password,
+            adress: payload.adress,
+            zip_code: payload.zip_code,
+            number: payload.number,
           });
           localStorage.setItem("users", JSON.stringify(state.users));
           alert('Registado com sucesso!')
@@ -45,6 +48,9 @@ export default new Vuex.Store({
             name: user.name,
             email: user.email,
             password: user.password,
+            adress: user.adress,
+            zip_code: user.zip_code,
+            number: user.number,
           });
           state.userExists = true
           localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser));

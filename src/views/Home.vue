@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container-full title">
-            <h1 id="redTitle">TESTE PW2</h1>
+            <h1 id="redTitle">Plataforma de venda de EPI</h1>
             <hr class="back-line">
             <div class="container" id="whiteRect">
                 <p id="space">space</p>
@@ -22,7 +22,7 @@
     .back-line {
         background-color: black;
         margin-top: -35px;
-        width: 60vw;
+        width: 80vw;
         display: block;
         z-index: 5;
         position: relative;
@@ -42,7 +42,7 @@
         background-color: white;
         margin-top: -35px;
         height: 35px;
-        width: 340px;
+        width: 600px;
         position: relative;
         display: block;
         z-index: 5;
