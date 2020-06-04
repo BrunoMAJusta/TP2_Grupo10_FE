@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="container col-sm-4">
-      <form v-on:submit.prevent="login()">
+      <form @submit.prevent="addEpi()">
         <div class="container col-sm-6">
           <div class="form-group">
             <label for="exampleInputName">Nome</label>
@@ -66,7 +66,21 @@ export default {
     category: "",
     price: "",
     img: ""
-  })
+  }),
+  methods: {
+    async addEpi() {
+      try {
+        await this.$store.dispatch("addEpi", {
+          name: this.name,
+          category_id: this.category,
+          img: this.img,
+          price: this.price
+        });
+      } catch (err) {
+        alert(err);
+      }
+    }
+  }
 };
 </script>
 
