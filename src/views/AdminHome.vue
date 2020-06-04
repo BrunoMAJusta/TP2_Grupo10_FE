@@ -1,6 +1,10 @@
 <template>
     <div>
         <div class="container-full title">
+            <h1 id="redTitle">Protect Yourself</h1>
+        </div>
+
+        <div class="container-full title">
             <h1 id="redTitle">Página de admin</h1>
             <hr class="back-line">
             <div class="container" id="whiteRect">
