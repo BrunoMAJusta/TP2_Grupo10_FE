@@ -44,6 +44,11 @@ const routes = [{
     name: "ordersTable",
     component: () => import("../views/OrdersTable.vue"),
   },
+  {
+    path: "/addEpis",
+    name: "addEpis",
+    component: () => import("../views/AddEpi.vue"),
+  },
 ]
 
 const router = new VueRouter({
