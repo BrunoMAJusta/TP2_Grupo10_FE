@@ -8,16 +8,21 @@
             </div>
         </div>
 
-        <!-- <div class="container">
-            <div class="card" style="width: 18rem;" v-for="epi in epis" :key="epi.id">
-                <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="container">
+            <div class="card" style="width: 18rem;" v-for="epi in epis" :key="epi.epi_id">
+                <img class="card-img-top" :src="epi.img" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{epi.name}}</h5>
-                    <p class="card-text">Preço: {{epi.name}}</p>
-                    <a href="#" class="btn btn-primary">ver Mais</a>
+                    <p class="card-text">Preço: {{epi.price}}</p>
+                    <button type="button" @click="showDetais(epi.epi_id)" squared>Ver</button>
+                    <button type="button" @click="addToCart(epi.epi_id)" squared>Encomendar</button>
                 </div>
             </div>
-        </div> -->
+        </div>
+
+        <div class="container">
+            
+        </div>
     </div>
 </template>
 
@@ -30,12 +35,13 @@
         data: function () {
             return {
                 epis: [],
+                orders: [],
                 userType: "",
                 users: []
             };
         },
         created() {
-            /* this.getMyMenus(); */
+            this.getEpis();
             if (localStorage.getItem("users")) {
                 this.$store.state.users = JSON.parse(localStorage.getItem("users"));
             }
@@ -43,17 +49,26 @@
             this.userType = this.$store.state.loggedUser.type;
         },
         methods: {
-            /* async getEpis() {
-              try {
-                await this.$store.dispatch("fetchEpis");
-                this.epis = this.getEpis.data;
-              } catch (err) {
-                alert(err);
-              }
-            } */
+            async getEpis() {
+                try {
+                    await this.$store.dispatch("fetchEpis");
+                    this.epis = this.getEPIS.data;
+                } catch (err) {
+                    alert(err);
+                }
+            },
+            async addOrder() {
+                try {
+                    await this.$store.dispatch("fetchOrderEpi");
+                    /* this.orders = this.getOrders.data; */
+                } catch (err) {
+                    alert(err);
+                }
+            }
         },
         computed: {
-            /* ...mapGetters(["getMenus"]), */
+            ...mapGetters(["getEPIS"])
+            /* ...mapGetters(["getOrders"]) */
         }
     }
 </script>
